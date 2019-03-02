@@ -66,14 +66,15 @@ export EXTERNAL_HOST=`trilogy-zulip.<devspaces-user>.devspaces.io:<9991-mapped-p
 7 - Provisioning
 
 ```bash
-./provision.sh 
+/prepare-repo.sh
+tools/provision --docker
 ```
 
 8 - Run Zulip
 
 ```bash
 source /srv/zulip-py3-venv/bin/activate
-./run.sh
+tools/start-dockers
 ```
 
 Access application URLs:
@@ -120,14 +121,14 @@ devspaces/docker-cli.sh exec
 3 - Provisioning
 
 ```bash
-./provision.sh
+tools/provision --docker
 ```
 
 4 - Run Zulip
 
 ```bash 
 source /srv/zulip-py3-venv/bin/activate
-./run.sh
+tools/start-dockers
 ```
 
 Access application URLs:

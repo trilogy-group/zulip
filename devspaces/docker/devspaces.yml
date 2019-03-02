@@ -20,7 +20,6 @@ ports:
     description: Thumbor
 
 sync-ignore: |
-  .git
   .idea
   .DS_Store
   .data

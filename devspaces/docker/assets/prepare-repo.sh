@@ -1,10 +1,10 @@
 #!/bin/bash
 
-pushd /data
 sudo chown -R zulip:zulip .
-if [ ! -d ".git" ]; then
-    git init
-fi
+#if [ ! -d ".git" ]; then
+#    git init
+#fi
+# executables for tools/provision script
 for file in tools/provision \
     tools/lib/provision.py \
     scripts/lib/setup-apt-repo \
@@ -32,8 +32,41 @@ for file in tools/provision \
 do
   chmod +x $file
 done
-tools/provision --docker
-for file in tools/clean-repo tools/webpack
+# common executables for tools/start-dockers and tools/test-all-docker scripts
+for file in clean-repo webpack
+do
+  chmod +x tools/$file
+done
+# executables for tools/start-dockers
+for file in tools/start-dockers \
+	tools/run-dev.py \
+	scripts/setup/flush-memcached \
+	tools/run-dev-queue-processors \
+	puppet/zulip/files/postgresql/process_fts_updates \
+	tools/compile-handlebars-templates
+do
+  chmod +x $file
+done
+# executables tools/test-all-docker
+pushd tools
+for file in test-all-docker \
+    test-all \
+    check-provision \
+    lint \
+    find-add-class \
+    check-templates \
+    check-urls \
+    commit-message-lint \
+    test-tools \
+    test-backend \
+    run-mypy \
+    test-migrations \
+    test-help-documentation \
+    test-api \
+    test-js-with-node \
+    check-capitalization \
+    check-frontend-i18n \
+    test-js-with-casper
 do
   chmod +x $file
 done
