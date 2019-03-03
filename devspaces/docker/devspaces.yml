@@ -1,0 +1,40 @@
+--- # devspaces.yml
+name: trilogy-zulip
+description: Development environment for Zulip Python Chat App
+icon-file: zulip.jpg
+
+docker-file: Dockerfile
+
+docker-build-includes: |
+  **/*
+
+ports:
+  - protocol: http
+    port-number: 9991
+    description: Web Proxy
+  - protocol: http
+    port-number: 9994
+    description: Webpack
+  - protocol: http
+    port-number: 9995
+    description: Thumbor
+
+sync-ignore: |
+  .idea
+  .DS_Store
+  .data
+  **/__pycache__
+  **/*.mo
+  **/*.pyc
+  .settings
+  var
+  zproject/dev-secrets.conf
+  static/generated/bots
+  static/generated/icons
+  static/generated/pygments_data.js
+  static/generated/github-contributors.json
+  static/locale/language_options.json
+  static/locale/language_name_map.json
+  static/templates/compiled.js
+  templates/zerver/emails/compiled
+  zerver/tests/fixtures/messages.json

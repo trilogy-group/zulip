@@ -1,0 +1,19 @@
+version: '3.2'
+services:  
+  trilogy-zulip:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    volumes:
+      - type: bind
+        source: ../../
+        target: /data
+    container_name: trilogy-zulip
+    ports: 
+      - "9991:9991"
+      - "9992:9992"
+      - "9993:9993"
+      - "9994:9994"
+      - "9995:9995"
+      - "5432:5432"
+    network_mode: host
