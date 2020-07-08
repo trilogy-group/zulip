@@ -1,0 +1,15 @@
+version: '3'
+services:
+  zilip:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: zilip-dev
+    ports: 
+      - "9991:9991"
+      - "9992:9992"
+      - "9993:9993"
+      - "9994:9994"
+    volumes:
+      - ..:/srv/zulip:Z
+    tty: true
